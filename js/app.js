@@ -49,7 +49,6 @@ let questions = [{
     images: "images/space.jpg"
 }];
 
-
 // question number in the array
 let questionNum = 0;
 
@@ -71,18 +70,18 @@ $(document).ready(function () {
         // run function verifyAnswer below
         verifyAnswer();
     });
-
 });
 
 function display(position) {
 
     questionNum = position;
-    //alert(questions[0]);
+
     $('.start').hide();
     $('#instruct').hide();
     $('#outcome').empty();
     $('#exp').empty();
-    $('#submit').show(); // display the current text-question- in the questions array
+    $('#submit').show();
+    // display the current text-question- in the questions array
     $('#theText').text(questions[questionNum].text);
     // update the src of the image
     $('#questionImage').attr('src', questions[questionNum].image);
@@ -94,10 +93,7 @@ function display(position) {
         $('#theText').append("<br /> <br/> <input type='radio' name='theAnswer' value='" + i + "'>" + questions[questionNum].answer[i]);
         //alert(questions[0].answer[3]);
     }
-
-
 }
-
 
 function verifyAnswer() {
     let userChoice = $("input[type='radio']:checked").val();
@@ -112,7 +108,9 @@ function verifyAnswer() {
             "font-size": "30px"
         });
         $('#exp').append("<br />" + questions[questionNum].explain + "<br/> <input type='button' name='submit' id='next' value='Next' onclick='display(questionNum + 1);'>");
+        //increment isCorrect by 1
         isCorrect++;
+        // update the .count to the total correct above
         $('.count').html(isCorrect);
 
 
@@ -126,7 +124,9 @@ function verifyAnswer() {
 
         // if answer is not correct ---
     } else {
+        // clear everything in the theText div
         $('#theText').empty();
+        // hid ethe submit button
         $('#submit').hide();
         // append incorrect and add styling
         $('#outcome').append("<br /> Incorrect ").css({
@@ -135,17 +135,17 @@ function verifyAnswer() {
 
         // display the explanation if they answer incorrectly and add a submit button which points to the question onclick
         $('#exp').append("<br />" + questions[questionNum].explain + "<br/> <input type='button' name='submit' id='next' value='Next' onclick='display(questionNum + 1);'>");
-        //alert(isCorrect);
+        // increment isWrong varable by 1
         isWrong++;
-
 
         // if questionNum is equal to the last question and total wrong is 5 or greater
         if (questionNum == 7 && isWrong >= 5) {
-            // hide everyhtin in container
+            // hide everything in container
             $('.container').hide();
+            // update the count for incorrect on the losing page
+            $('.wrongCount').html(isWrong);
             // display the losing results and screen
             $('.losingDiv').show();
-
         }
     }
 }
