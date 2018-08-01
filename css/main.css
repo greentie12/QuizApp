@@ -1,0 +1,176 @@
+body {
+    background-color: #ddd3ee;
+}
+
+p {
+    font-family: 'Spinnaker', sans-serif;
+    font-size: 25px;
+    color: #5F0050;
+    font-weight: bold;
+}
+
+img {
+    height: 420px;
+    /*width: 200px;*/
+    display: inline;
+    /*opacity: 0.8; */
+}
+
+header {
+    width: 100%;
+    height: 120px;
+    background-color: #f2eff9;
+    border-bottom: 2px solid #e3dcf2;
+}
+
+.container {
+    width: 900px;
+    margin: 40px auto;
+    overflow: auto;
+}
+
+#instruct {
+    font-family: 'Spinnaker', sans-serif;
+    font-size: 20px;
+    color: #770064;
+    font-weight: bold;
+    text-align: center;
+}
+
+.headline h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 30px;
+    color: #770064;
+}
+
+.sidebar {
+    width: 300px;
+    height: 640px;
+    float: left;
+    margin-left: 25px;
+    margin-right: 25px;
+    display: inline;
+
+}
+
+/*correct / Incorrect */
+
+.sidebar h1 {
+    font-family: 'Spinnaker', sans-serif;
+    font-size: 65px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    color: #5F0050;
+}
+
+.button_spec {
+    padding-left: 10px;
+    margin: auto;
+}
+
+/*Enter - Submit button after question*/
+
+#submit {
+    font-family: cursive;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: #38959a;
+    border: none;
+    padding: 4px 10px;
+    font-size: 14px;
+    display: none;
+    margin: auto;
+}
+
+#next {
+    font-family: cursive;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: #38959a;
+    border: none;
+    padding: 4px 10px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+#startQuiz {
+    font-family: cursive;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 8px;
+    background-color: #38959a;
+    border: none;
+    padding: 4px 10px;
+    font-size: 14px;
+    margin: auto;
+}
+
+.start {
+    width: 100px;
+    margin: auto;
+}
+
+.countDiv {
+    width: 100%;
+    margin: auto;
+    padding-top: 20px;
+    display: none;
+}
+
+.countDivWin {
+    padding-top: 10px;
+    margin: auto;
+}
+
+/*styles for current score*/
+
+.countDiv p {
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Chewy', cursive;
+}
+
+.winningDiv {
+    display: none;
+}
+
+.losingDiv {
+    display: none;
+}
+
+#play,
+#play2 {
+    width: 200px;
+    margin: auto;
+    padding-top: 10px;
+}
+
+.win,
+.lose {
+    width: 810px;
+    height: 500px;
+    margin: auto;
+}
+
+.win img {
+    width: 800px;
+    height: 500px;
+}
+
+.lose img {
+    width: 800px;
+    height: 500px;
+}
+
+
+#submit,
+#next {
+    font-size: 18px;
+}
+
+#startQuiz {
+    font-size: 20px;
+}
