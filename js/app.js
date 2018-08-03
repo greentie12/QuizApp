@@ -9,7 +9,7 @@ let questions = [{
     text: "Which tile is darker gray?",
     answer: ["Top", "Bottom", "Both the same gray"],
     correct_answer: 2,
-    explain: "Both tiles are actually the same shade of gray. Your brain just translates the bottom to a lighter gray due to the percieved shadow. If you place a pen or pencil between the lines that connects them you will see they are both the same exat gray.",
+    explain: "Both tiles are actually the same shade of gray. Your brain just translates the bottom to a lighter gray due to the percieved shadow. If you place a pen or pencil between the lines that connects them you will see they are both the same shade of gray.",
     image: "images/gray-shade.jpg"
 }, {
     text: "How many years did it take to build the Leaning Tower of Pisa?",
