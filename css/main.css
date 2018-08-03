@@ -11,9 +11,7 @@ p {
 
 img {
     height: 420px;
-    /*width: 200px;*/
     display: inline;
-    /*opacity: 0.8; */
 }
 
 header {
@@ -55,7 +53,7 @@ header {
 
 }
 
-/*correct / Incorrect */
+/* you're right / incorrect text */
 
 .sidebar h1 {
     font-family: 'Spinnaker', sans-serif;
@@ -99,13 +97,13 @@ header {
 #startQuiz {
     font-family: cursive;
     font-weight: bold;
-    font-size: 18px;
     border-radius: 8px;
     background-color: #38959a;
     border: none;
     padding: 4px 10px;
     font-size: 14px;
     margin: auto;
+    font-size: 20px;
 }
 
 .start {
@@ -167,8 +165,4 @@ header {
 #submit,
 #next {
     font-size: 18px;
-}
-
-#startQuiz {
-    font-size: 20px;
 }

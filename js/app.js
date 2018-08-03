@@ -51,9 +51,9 @@ let questions = [{
 
 // question number in the array
 let questionNum = 0;
-
+// initialize correct counter to 0
 let isCorrect = 0;
-
+// initialize incorrect counter to 0
 let isWrong = 0;
 
 $(document).ready(function () {
@@ -71,7 +71,7 @@ $(document).ready(function () {
         verifyAnswer();
     });
 });
-
+// position based on current questionNum
 function display(position) {
 
     questionNum = position;
@@ -110,16 +110,25 @@ function verifyAnswer() {
         $('#exp').append("<br />" + questions[questionNum].explain + "<br/> <input type='button' name='submit' id='next' value='Next' onclick='display(questionNum + 1);'>");
         //increment isCorrect by 1
         isCorrect++;
+        console.log(`Correct = ${isCorrect}`);
         // update the .count to the total correct above
         $('.count').html(isCorrect);
 
 
+
         // if questionNum is equal to the last question and total correct is 5 or greater
-        if (questionNum == (questions.length - 1) && isCorrect >= 5) {
+        if (questionNum == 7 && isCorrect >= 5) {
             // hide everyhtin in container
             $('.container').hide();
             // display the wining results and screen
             $('.winningDiv').show();
+        } else if (questionNum == 7 && isWrong >= 4) {
+            // hide everything in container
+            $('.container').hide();
+            // update the count for incorrect on the losing page
+            $('.wrongCount').html(isWrong);
+            // display the losing results and screen
+            $('.losingDiv').show();
         }
 
         // if answer is not correct ---
@@ -137,15 +146,21 @@ function verifyAnswer() {
         $('#exp').append("<br />" + questions[questionNum].explain + "<br/> <input type='button' name='submit' id='next' value='Next' onclick='display(questionNum + 1);'>");
         // increment isWrong varable by 1
         isWrong++;
+        console.log(`Wrong = ${isWrong}`);
 
         // if questionNum is equal to the last question and total wrong is 5 or greater
-        if (questionNum == 7 && isWrong >= 5) {
+        if (questionNum == 7 && isWrong >= 4) {
             // hide everything in container
             $('.container').hide();
             // update the count for incorrect on the losing page
             $('.wrongCount').html(isWrong);
             // display the losing results and screen
             $('.losingDiv').show();
+        } else if (questionNum == 7 && isCorrect >= 5) {
+            // hide everyhtin in container
+            $('.container').hide();
+            // display the wining results and screen
+            $('.winningDiv').show();
         }
     }
 }
