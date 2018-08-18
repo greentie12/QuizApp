@@ -1,47 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <head>
-    <meta charset="utf-8">
-    <title>Taino's Quiz App</title>
+    <title>Trivia Quiz</title>
+
     <link rel="stylesheet" href="css/reset.css">
-
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css?family=Spinnaker" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 
 </head>
 
 <body>
 
     <header>
-        <div class="headline" id="headline">
-            <h1>Trivia Quiz</h1>
-            <br />
-            <p id="instruct">Instructions: Click below to start your random trivia game.</p>
-        </div>
+        <h1>Trivia Quiz</h1>
+        <span class="start">
+        <p class="instruct">Instructions: Click below to start your trivia game.</p>
+        <input type="button" class="startQuiz" value="start">
+        </span>
     </header>
 
-    <div class="winningDiv">
-        <div class="win">
-            <img src="images/win.jpg">
-        </div>
-        <div class="countDiv countDivWin">
-            <p>You Answered #<span class="count">0</span> Correct Out Of 8 Questions</p>
+    <section class="questionSection">
+
+        <div class="theText"></div>
+        <form>
+            <div class="choices"></div>
+            <span><input type="button" name="submit" class="submit" value="Enter"></span>
+        </form>
+        <section class="explain"></section>
+
+        <div> <img id="questionImage" src="" alt=""> </div>
+        <div class="questionNum"></div>
+
+        <div class="countDiv">
+            <p>Correct # <span class="count">0</span></p>
         </div>
 
-        <div id="play">
+    </section>
+
+    <section class="winningDiv">
+        <div class="win">
+            <img src="images/win.jpg">
+            <p>You Answered #<span class="count">0</span> Correct Out Of 8 Questions</p>
             <a href="index.html">
                 <p>-Play Again-</p>
             </a>
         </div>
-    </div>
+    </section>
 
-    <div class="losingDiv">
+    <section class="losingDiv">
         <div class="lose">
             <img src="images/lose.jpg">
         </div>
@@ -54,43 +65,15 @@
                 <p>-Play Again-</p>
             </a>
         </div>
-    </div>
+    </section>
 
-    <div class="start">
-        <input type="button" id="startQuiz" value="start">
-    </div>
-    <div class="container">
-        <div class="sidebar" id="side">
-            <div class="main" id="main">
-                <div class="got-ques" id="got1">
-                    <div class="ques1" id="ques1"></div>
-                    <p id="theText"> </p>
-                </div>
-                <br>
-                <form class="button_spec">
-                    <center>
-                        <input type="button" name="submit" id="submit" value="Enter">
-                    </center>
-                    <h1 id="outcome"> </h1>
-                    <p id="exp"> </p>
-                    <br />
-                    <div class="progress">
-                        <p><br><span class="questionNum"></span></p>
-                    </div>
-                    <div class="countDiv">
-                        <p>Correct # <span class="count">0</span></p>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="imageDiv">
-            <img id="questionImage" src="" alt="">
-        </div>
-    </div>
+
+
+
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/app.js"></script>
 
 </body>
-
 </html>

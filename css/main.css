@@ -1,5 +1,21 @@
 body {
     background-color: #ddd3ee;
+    font-family: 'Spinnaker', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #5F0050;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+    padding-top: 30px;
+    color: #770064;
+    display: inline-block
 }
 
 p {
@@ -9,78 +25,67 @@ p {
     font-weight: bold;
 }
 
-img {
-    height: 420px;
-    display: inline;
+#questionImage img {
+    width: 320px;
+    margin-top: 10px;
 }
 
-header {
-    width: 100%;
-    height: 120px;
-    background-color: #f2eff9;
-    border-bottom: 2px solid #e3dcf2;
+li {
+    margin-bottom: 10px;
+    text-align: left;
 }
 
-.container {
-    width: 900px;
-    margin: 40px auto;
-    overflow: auto;
-}
-
-#instruct {
+.startQuiz {
     font-family: 'Spinnaker', sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: #38959a;
+    border: none;
+    padding: 10px;
     font-size: 20px;
-    color: #770064;
-    font-weight: bold;
+}
+
+.instruct {
+    margin: 5px 0px 10px 0px;
+}
+
+.questionSection {
+    margin-top: 10px;
     text-align: center;
-}
-
-.headline h1 {
-    font-family: 'Lobster', cursive;
-    font-size: 40px;
-    text-align: center;
-    padding-top: 30px;
-    color: #770064;
-}
-
-.sidebar {
-    width: 300px;
-    height: 640px;
-    float: left;
-    margin-left: 25px;
-    margin-right: 25px;
-    display: inline;
 
 }
 
-/* you're right / incorrect text */
+.questionImage {}
 
-.sidebar h1 {
-    font-family: 'Spinnaker', sans-serif;
-    font-size: 65px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: underline;
-    color: #5F0050;
-}
-
-.button_spec {
-    padding-left: 10px;
+form {
     margin: auto;
+    width: 300px;
+    padding: 10px 0px 10px 0px
 }
 
-/*Enter - Submit button after question*/
-
-#submit {
+.submit {
     font-family: cursive;
     font-weight: bold;
     border-radius: 8px;
     background-color: #38959a;
     border: none;
-    padding: 4px 10px;
+    padding: 6px 6px;
     font-size: 14px;
     display: none;
+}
+
+.explain {
+    font-size: 20px;
+    width: 75%;
     margin: auto;
+    text-align: left;
+}
+
+.explain h2 {
+    font-size: 30px;
+    text-align: center;
+    padding-bottom: 15px;
+
 }
 
 #next {
@@ -92,77 +97,28 @@ header {
     padding: 4px 10px;
     margin-top: 10px;
     font-size: 14px;
-}
-
-#startQuiz {
-    font-family: cursive;
-    font-weight: bold;
-    border-radius: 8px;
-    background-color: #38959a;
-    border: none;
-    padding: 4px 10px;
-    font-size: 14px;
-    margin: auto;
-    font-size: 20px;
-}
-
-.start {
-    width: 100px;
+    display: block;
     margin: auto;
 }
 
 .countDiv {
-    width: 100%;
-    margin: auto;
-    padding-top: 20px;
     display: none;
-}
-
-.countDivWin {
-    padding-top: 10px;
-    margin: auto;
-}
-
-.countDiv p {
-    font-size: 40px;
-    text-align: center;
-    font-family: 'Chewy', cursive;
 }
 
 .winningDiv {
     display: none;
+    text-align: center;
 }
 
 .losingDiv {
     display: none;
-}
-
-#play,
-#play2 {
-    width: 200px;
-    margin: auto;
-    padding-top: 10px;
-}
-
-.win,
-.lose {
-    width: 810px;
-    height: 500px;
-    margin: auto;
+    text-align: center;
 }
 
 .win img {
-    width: 800px;
-    height: 500px;
+    width: 50%;
 }
 
 .lose img {
-    width: 800px;
-    height: 500px;
-}
-
-
-#submit,
-#next {
-    font-size: 18px;
+    width: 50%;
 }
