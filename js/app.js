@@ -115,7 +115,7 @@ function display(position) {
         for (let i = 0; i <= questions.length - 1; i++) {
             // iterate over the aray to display the questions and answers
             // which append to the finalExplain section on the final page
-            $('.finalExplain').append("<br><ul><li>" + (i + 1) + '. ' + questions[i].text + "answer - " + questions[i].explain + "</li></ul>");
+            $('.finalExplain').append("<br><ul><li>" + (i + 1) + '. ' + questions[i].text + " " + questions[i].explain + "</li></ul>");
         };
 
         // if the question number is equal to the amount of questions in the questions array
@@ -129,7 +129,7 @@ function display(position) {
         $('.losingDiv').show();
 
         for (let i = 0; i <= questions.length - 1; i++) {
-            $('.finalExplain').append("<br><ul><li>" + (i + 1) + '. ' + questions[i].text + "answer - " + questions[i].explain + "</li></ul>");
+            $('.finalExplain').append("<br><ul><li>" + (i + 1) + '. ' + questions[i].text + " " + questions[i].explain + "</li></ul>");
         }
     }
 
