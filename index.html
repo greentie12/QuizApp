@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,9 +18,15 @@
 <body>
 
     <header>
-        <h1>Trivia Quiz</h1>
+
+        <div id="messageBox" class="demoMessage">
+            <span>Loading ...</span>
+        </div>
+
+        <h1 class="titleName">Trivia Quiz</h1>
         <span class="start">
-        <p class="instruct">Instructions: Click below to start your trivia game.</p>
+        <p class="instruct">Click below to start your trivia game</p>
+        <p>Answer at least 5 correct to win</p>
         <input type="button" class="startQuiz" value="start">
         </span>
     </header>
@@ -46,9 +53,8 @@
         <div class="win">
             <img src="images/win.jpg">
             <p>You Answered #<span class="count">0</span> Correct Out Of 8 Questions</p>
-            <a href="index.html">
-                <p>-Play Again-</p>
-            </a>
+            <input type="button" class="resetQuiz" value="Play Again">
+            <section class="finalExplain"></section>
         </div>
     </section>
 
@@ -59,21 +65,13 @@
         <div class="countDiv countDivWin">
             <p>You Answered #<span class="wrongCount">0</span> Incorrect Out Of 8 Questions</p>
         </div>
-
-        <div id="play2">
-            <a href="index.html">
-                <p>-Play Again-</p>
-            </a>
-        </div>
+        <input type="button" class="resetQuiz" value="Play Again">
+        <section class="finalExplain"></section>
     </section>
-
-
-
-
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/app.js"></script>
 
 </body>
+
 </html>

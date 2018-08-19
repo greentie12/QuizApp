@@ -1,3 +1,4 @@
+//Create an object with an array containing question, choices, correct answer#, explanation and image
 let questions = [{
     text: "Who is the original author of the Game of Thrones book series?",
     answer: ["Stephen King", "J.R. Tolkien", "L. Ron Hubbard", "George R.R. Martin"],
@@ -48,6 +49,14 @@ let questions = [{
     image: "images/mars.jpg"
 }];
 
+// popup which alerts if the answer is correct or incorrect
+// as well as indicating if a valid repsonse needs to be made
+function displayError(message) {
+    $("#messageBox span").html(message);
+    $("#messageBox").fadeIn();
+    $("#messageBox").fadeOut(1500);
+};
+
 // question number in the array
 let questionNum = 0;
 // initialize correct counter to 0
@@ -55,67 +64,96 @@ let isCorrect = 0;
 // initialize incorrect counter to 0
 let isWrong = 0;
 
+
 $(function () {
 
-    $('.startQuiz').on('click', () => {
+    $("#messageBox").hide();
 
+    //on click of the startQuiz button run the function display(0)
+    $('.startQuiz').on('click', () => {
         display(0);
     });
 
+    // on click of the .submit in the quiz run the verifyanswer() function
     $('.submit').on('click', () => {
-
         verifyAnswer();
+    });
+
+    // on click on the final page resetQuiz button reinitialize the variables
+    // and run the function display()
+    $('.resetQuiz').on('click', () => {
+        $('.winningDiv').hide();
+        $('.losingDiv').hide();
+        questionNum = 0;
+        // initialize correct counter to 0
+        isCorrect = 0;
+        // initialize incorrect counter to 0
+        isWrong = 0;
+        display(questionNum);
+        // rewrite the count to the new isCorrect #
+        $('.count').html(isCorrect);
+        // show the questionSection
+        $('.questionSection').show();
+        //clears the finalExplain on the final page to allow to re-write to it
+        $('.finalExplain').empty();
+
     });
 });
 
 
 function display(position) {
 
+    //THE FOLLOWING if / else STATEMENTS CHECK FOR THE WINNING OR LOSING RESULTS
+    // if the question number is equal to the amount of questions in the questions array
+    // and user has answered 5 or more correct --- run the following
     if ((questionNum === (questions.length - 1)) && isCorrect >= 5) {
-        // hide everyhtin in container
+        // hide the questionSection
         $('.questionSection').hide();
         // display the wining results and screen
         $('.winningDiv').show();
+
+        for (let i = 0; i <= questions.length - 1; i++) {
+            // iterate over the aray to display the questions and answers
+            // which append to the finalExplain section on the final page
+            $('.finalExplain').append("<br><ul><li>" + (i + 1) + '. ' + questions[i].text + "answer - " + questions[i].explain + "</li></ul>");
+        };
+
+        // if the question number is equal to the amount of questions in the questions array
+        // and user has answered 4 or more incorrect --- run the following
     } else if ((questionNum === (questions.length - 1)) && isWrong >= 4) {
-        // hide everything in container
+
         $('.questionSection').hide();
         // update the count for incorrect on the losing page
         $('.wrongCount').html(isWrong);
         // display the losing results and screen
         $('.losingDiv').show();
+
+        for (let i = 0; i <= questions.length - 1; i++) {
+            $('.finalExplain').append("<br><ul><li>" + (i + 1) + '. ' + questions[i].text + "answer - " + questions[i].explain + "</li></ul>");
+        }
     }
 
-    if ((questionNum === (questions.length - 1)) && isWrong >= 4) {
-        // hide everything in container
-        $('.questionSection').hide();
-        // update the count for incorrect on the losing page
-        $('.wrongCount').html(isWrong);
-        // display the losing results and screen
-        $('.losingDiv').show();
-    } else if ((questionNum === (questions.length - 1)) && isCorrect >= 5) {
-        // hide everyhtin in container
-        $('.questionSection').hide();
-        // display the wining results and screen
-        $('.winningDiv').show();
-    }
 
     questionNum = position;
 
     $('.start').hide();
 
+    $('.titleName').hide();
+
     $('.explain').empty();
 
-    $('.submit').show();
+    $('.submit').hide().fadeIn(500);
 
-    $('.theText').show();
+    $('.theText').hide();
 
-    $('.choices').show();
+    $('.choices').hide().fadeIn(500);
 
-    $('.theText').text(questions[questionNum].text);
+    $('.theText').text(questions[questionNum].text).css("fontSize", 25).hide().fadeIn(500);
 
-    $('#questionImage').attr('src', questions[questionNum].image);
+    $('#questionImage').attr('src', questions[questionNum].image).hide().fadeIn(500);
 
     $('.questionNum').text(`Question # ${questionNum + 1} out of ${questions.length}`);
+    $('.choices').empty();
 
     for (let i = 0; i <= questions[questionNum].answer.length - 1; i++) {
 
@@ -126,70 +164,39 @@ function display(position) {
 function verifyAnswer() {
     let userChoice = $("input[type='radio']:checked").val();
 
-    // if the users choice equals the questions array-index-correct answer
 
+    // if user does not click a radio button
     if (userChoice === undefined) {
-
+        displayError('Please choose a valid response below.');
+        // if the users choice equals the questions array-index-correct answer
     } else if (userChoice == questions[questionNum].correct_answer) {
-
-        console.log(questionNum);
-
-
 
         $('.theText').hide();
         $('.submit').hide();
         $('.choices').empty();
 
-
-        $('.explain').append("<h2>You're Right!</h2>");
-        $('.explain').append(questions[questionNum].explain + "<input type='button' name='submit' id='next' value='Next' onclick='display(questionNum + 1);'>");
+        displayError("<h2>Correct</h2>");
         //increment isCorrect by 1
         isCorrect++;
-        //        console.log(`Correct = ${isCorrect}`);
         // update the .count to the total correct above
         $('.count').html(isCorrect);
-        //        console.log(questionNum);
         $('.countDiv').show();
-
-
-
-        // if questionNum is equal to the last question and total correct is 5 or greater
-        if ((questionNum === (questions.length - 1)) && ((userChoice == questions[questionNum].correct_answer))) {
-            $('.explain').empty();
-            $('.explain').append("<h2>You're Right!</h2>");
-            $('.explain').append(questions[questionNum].explain + "<input type='button' name='submit' id='next' value='Next' onclick='display(questionNum + 1);'>");
-
-        }
+        display(questionNum + 1);
 
         // if answer is not correct ---
     } else {
-        // clear everything in the theText div
-        console.log(questionNum);
 
         $('.theText').empty();
-        // hid ethe submit button
+        // hide the submit button
         $('.submit').hide();
 
         $('.choices').empty();
-        // append incorrect and add styling
-        $('.explain').append("<h2>Incorrect</h2>");
+        displayError("<h2>Incorrect</h2>");
 
-        // display the explanation if they answer incorrectly and add a submit button which points to the question onclick
-        $('.explain').append(questions[questionNum].explain + "<br/> <input type='button' name='submit' id='next' value='Next' onclick='display(questionNum + 1);'>");
         // increment isWrong varable by 1
         isWrong++;
-        //        console.log(`Wrong = ${isWrong}`);
-        //        console.log(questionNum);
 
+        display(questionNum + 1);
         // if questionNum is equal to the last question and total wrong is 5 or greater
-        if ((questionNum === (questions.length - 1))) {
-            // hide everything in container
-            $('.explain').empty();
-            $('.explain').append("<h2>Incorrect</h2>");
-
-            // display the explanation if they answer incorrectly and add a submit button which points to the question onclick
-            $('.explain').append(questions[questionNum].explain + "<br/> <input type='button' name='submit' id='next' value='Next' onclick='display(questionNum + 1);'>");
-
-        }
     }
 }

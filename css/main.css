@@ -4,10 +4,12 @@ body {
     font-size: 20px;
     font-weight: bold;
     color: #5F0050;
+    margin-top: 10px;
 }
 
 header {
     text-align: center;
+    margin-bottom: 65px;
 }
 
 h1 {
@@ -25,8 +27,32 @@ p {
     font-weight: bold;
 }
 
-#questionImage img {
-    width: 320px;
+header .demoMessage {
+    position: fixed;
+    top: 0px;
+    left: 35%;
+    background-color: #5A0064;
+    /*    color: white;*/
+    padding: 10px 5%;
+    width: 20%;
+    text-align: center;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+header .demoMessage span,
+header .demoMessage a p {
+    color: white;
+
+}
+
+header .demoMessage a {
+    cursor: pointer;
+    color: white;
+}
+
+img {
+    height: 420px;
     margin-top: 10px;
 }
 
@@ -35,7 +61,8 @@ li {
     text-align: left;
 }
 
-.startQuiz {
+.startQuiz,
+.resetQuiz {
     font-family: 'Spinnaker', sans-serif;
     font-weight: bold;
     border-radius: 8px;
@@ -116,9 +143,17 @@ form {
 }
 
 .win img {
-    width: 50%;
+    height: 50%;
+    width: 50%
 }
 
 .lose img {
+    height: 50%;
     width: 50%;
+}
+
+.finalExplain {
+    margin-top: 20px;
+    width: 75%;
+    margin: auto;
 }
