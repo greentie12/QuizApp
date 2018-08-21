@@ -49,55 +49,12 @@ let questions = [{
     image: "images/mars.jpg"
 }];
 
-// popup which alerts if the answer is correct or incorrect
-// as well as indicating if a valid repsonse needs to be made
-function displayError(message) {
-    $("#messageBox span").html(message);
-    $("#messageBox").fadeIn();
-    $("#messageBox").fadeOut(1500);
-};
-
 // question number in the array
 let questionNum = 0;
 // initialize correct counter to 0
 let isCorrect = 0;
 // initialize incorrect counter to 0
 let isWrong = 0;
-
-$(function () {
-
-    //    $("#messageBox").hide();
-
-    //on click of the startQuiz button run the function display(0)
-    $('.startQuiz').on('click', () => {
-        display(0);
-    });
-
-    // on click of the .submit in the quiz run the verifyanswer() function
-    $('.submit').on('click', () => {
-        verifyAnswer();
-    });
-
-    // on click on the final page resetQuiz button reinitialize the variables
-    // and run the function display()
-    $('.resetQuiz').on('click', () => {
-        $('.winningDiv').hide();
-        $('.losingDiv').hide();
-        questionNum = 0;
-        // initialize correct counter to 0
-        isCorrect = 0;
-        // initialize incorrect counter to 0
-        isWrong = 0;
-        display(questionNum);
-        // rewrite the count to the new isCorrect #
-        $('.count').html(isCorrect);
-        // show the questionSection
-        $('.questionSection').show();
-        //clears the finalExplain on the final page to allow to re-write to it
-        $('.finalExplain').empty();
-
-    });
-});
 
 function display(position) {
     //THE FOLLOWING if / else STATEMENTS CHECK FOR THE WINNING OR LOSING RESULTS
@@ -148,7 +105,7 @@ function display(position) {
 
     for (let i = 0; i <= questions[questionNum].answer.length - 1; i++) {
 
-        $('.choices').append("<form><fieldset><legend></legend><p class='choicesOptions'><input type='radio' name='theAnswer' value='" + i + "'>" + questions[questionNum].answer[i] + "</p></fieldset></form>");
+        $('.choices').append("<li><input type='radio' name='theAnswer' value='" + i + "'>" + questions[questionNum].answer[i] + "</li>");
     }
 }
 
@@ -207,3 +164,38 @@ function verifyAnswer() {
 function nextQuestion() {
     display(questionNum + 1);
 }
+
+$(function () {
+
+    //    $("#messageBox").hide();
+
+    //on click of the startQuiz button run the function display(0)
+    $('.startQuiz').on('click', () => {
+        display(0);
+    });
+
+    // on click of the .submit in the quiz run the verifyanswer() function
+    $('.submit').on('click', () => {
+        verifyAnswer();
+    });
+
+    // on click on the final page resetQuiz button reinitialize the variables
+    // and run the function display()
+    $('.resetQuiz').on('click', () => {
+        $('.winningDiv').hide();
+        $('.losingDiv').hide();
+        questionNum = 0;
+        // initialize correct counter to 0
+        isCorrect = 0;
+        // initialize incorrect counter to 0
+        isWrong = 0;
+        display(questionNum);
+        // rewrite the count to the new isCorrect #
+        $('.count').html(isCorrect);
+        // show the questionSection
+        $('.questionSection').show();
+        //clears the finalExplain on the final page to allow to re-write to it
+        $('.finalExplain').empty();
+
+    });
+});
