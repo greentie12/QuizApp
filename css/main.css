@@ -21,7 +21,6 @@ h1 {
 }
 
 p {
-    font-family: 'Spinnaker', sans-serif;
     font-size: 25px;
     color: #5F0050;
     font-weight: bold;
@@ -63,7 +62,6 @@ li {
 
 .startQuiz,
 .resetQuiz {
-    font-family: 'Spinnaker', sans-serif;
     font-weight: bold;
     border-radius: 8px;
     background-color: #38959a;
@@ -82,7 +80,13 @@ li {
 
 }
 
-.questionImage {}
+.choices {
+    text-align: justify;
+}
+
+.choicesOptions {
+    font-size: 20px;
+}
 
 form {
     margin: auto;
@@ -115,6 +119,10 @@ form {
 
 }
 
+li {
+    list-style: none;
+}
+
 #next {
     font-family: cursive;
     font-weight: bold;
@@ -135,6 +143,18 @@ form {
 .winningDiv {
     display: none;
     text-align: center;
+}
+
+.alertP {
+    background-color: #C3B9D7;
+    border-radius: 8px;
+    width: 30%;
+    margin: auto;
+    color: #E3375B;
+    padding: 10px 0px 10px 0px;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .losingDiv {

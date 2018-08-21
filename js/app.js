@@ -64,10 +64,9 @@ let isCorrect = 0;
 // initialize incorrect counter to 0
 let isWrong = 0;
 
-
 $(function () {
 
-    $("#messageBox").hide();
+    //    $("#messageBox").hide();
 
     //on click of the startQuiz button run the function display(0)
     $('.startQuiz').on('click', () => {
@@ -100,9 +99,7 @@ $(function () {
     });
 });
 
-
 function display(position) {
-
     //THE FOLLOWING if / else STATEMENTS CHECK FOR THE WINNING OR LOSING RESULTS
     // if the question number is equal to the amount of questions in the questions array
     // and user has answered 5 or more correct --- run the following
@@ -117,7 +114,6 @@ function display(position) {
             // which append to the finalExplain section on the final page
             $('.finalExplain').append("<br><ul><li>" + (i + 1) + '. ' + questions[i].text + " " + questions[i].explain + "</li></ul>");
         };
-
         // if the question number is equal to the amount of questions in the questions array
         // and user has answered 4 or more incorrect --- run the following
     } else if ((questionNum === (questions.length - 1)) && isWrong >= 4) {
@@ -133,19 +129,14 @@ function display(position) {
         }
     }
 
-
     questionNum = position;
 
     $('.start').hide();
-
     $('.titleName').hide();
-
     $('.explain').empty();
-
+    $('.userAlert').hide();
     $('.submit').hide().fadeIn(500);
-
     $('.theText').hide();
-
     $('.choices').hide().fadeIn(500);
 
     $('.theText').text(questions[questionNum].text).css("fontSize", 25).hide().fadeIn(500);
@@ -157,46 +148,62 @@ function display(position) {
 
     for (let i = 0; i <= questions[questionNum].answer.length - 1; i++) {
 
-        $('.choices').append("<ul><li><input type='radio' name='theAnswer' value='" + i + "'>" + questions[questionNum].answer[i] + "</li></ul>");
+        $('.choices').append("<form><fieldset><legend></legend><p class='choicesOptions'><input type='radio' name='theAnswer' value='" + i + "'>" + questions[questionNum].answer[i] + "</p></fieldset></form>");
     }
 }
 
 function verifyAnswer() {
     let userChoice = $("input[type='radio']:checked").val();
 
-
     // if user does not click a radio button
     if (userChoice === undefined) {
-        displayError('Please choose a valid response below.');
+        $('.userAlert').hide().empty();
+        $('.userAlert').append("<p class='alertP'>Please choose an answer above</p>").fadeIn(500);
+        //        displayError('Please choose a valid response below.');
         // if the users choice equals the questions array-index-correct answer
     } else if (userChoice == questions[questionNum].correct_answer) {
 
+        $('.userAlert').hide();
         $('.theText').hide();
         $('.submit').hide();
         $('.choices').empty();
+        $('.explain').hide();
 
-        displayError("<h2>Correct</h2>");
-        //increment isCorrect by 1
+        $('.explain').append("<h2>You're Right!</h2>").fadeIn(600);
+        $('.explain').append(questions[questionNum].explain + "<input type='button' name='submit' id='next' value='Next'>");
+        // increment isCorrect by 1
         isCorrect++;
         // update the .count to the total correct above
         $('.count').html(isCorrect);
         $('.countDiv').show();
-        display(questionNum + 1);
+
+        // on click of #next button run the nextQuestion() function
+        $('#next').on('click', () => {
+            nextQuestion();
+        });
 
         // if answer is not correct ---
     } else {
 
+        $('.userAlert').hide();
         $('.theText').empty();
         // hide the submit button
         $('.submit').hide();
 
         $('.choices').empty();
-        displayError("<h2>Incorrect</h2>");
+        $('.explain').hide();
+        $('.explain').append("<h2>Incorrect</h2>").fadeIn(600);
+        $('.explain').append(questions[questionNum].explain + "<input type='button' name='submit' id='next' value='Next'>");
 
         // increment isWrong varable by 1
         isWrong++;
 
-        display(questionNum + 1);
-        // if questionNum is equal to the last question and total wrong is 5 or greater
+        $('#next').on('click', () => {
+            nextQuestion();
+        });
     }
+}
+
+function nextQuestion() {
+    display(questionNum + 1);
 }
